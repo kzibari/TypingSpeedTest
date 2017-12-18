@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Typing Speed Test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<link href="style.css" rel="stylesheet">
+	<script src="scripts.js"></script>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<h2><strong>Typing Speed Test</strong></h2>
+			<ul>
+				<li>Type the text below in the box.</li>
+				<li>Your time will start when you click Start.</li>
+				<li>Click Finish when you are done.</li>
+			</ul>
+		</div>
+		<div id="sampleText" class="alert alert-info">
+			As they rounded a bend in the path that ran beside the river, Lara recognized the silhouette of a fig tree atop a nearby hill.
+		</div>
+
+		<textarea id="theText" class="form-control" rows="4"></textarea>
+		<br>
+		<button type="button" id="start" class="btn btn-primary btn-lg btn-block">Start</button>
+		<button type="button" id="finish" class="btn btn-primary btn-lg btn-block">Finish</button>
+
+		<br>
+		<div id="resultSpeed" class="alert alert-info">
+		</div>
+		<div id="resultErrors" class="alert alert-danger">
+		</div>
+		<div id="underlinedText" class="alert alert-info">
+		</div>
+		<div id="chartContainer" style="height: 370px; width: 100%;">
+		</div>
+
+
+	</div>
+</body>
+
+</html>

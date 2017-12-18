@@ -1,0 +1,12 @@
+* {
+	padding: 5px;
+	font-family: Verdana, sens_serif;
+}
+
+textarea {
+	padding: 5px;
+	font-size: 16px;
+	color: darkblue;
+	font-weight: 600;
+}
+
