@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
 	<title>Typing Speed Test</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,35 +16,37 @@
 </head>
 
 <body>
+
 	<div class="container">
-		<div class="jumbotron">
+		<div class="jumbotron clearfix">
+			<img class="img-rounded" style="float:right; margin: 5px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEdy6teipz7Utk8Fm7gRJjQtzLPemuEKl-k0HzwMsOd6Pe5bWDng" alt="Typing on a Keyboard">
 			<h2><strong>Typing Speed Test</strong></h2>
-			<ul>
-				<li>Type the text below in the box.</li>
-				<li>Your time will start when you click Start.</li>
-				<li>Click Finish when you are done.</li>
-			</ul>
+			Type the text below in the box. Your time will start when you click Start. Click Finish when you are done.
 		</div>
 		<div id="sampleText" class="alert alert-info">
-			As they rounded a bend in the path that ran beside the river, Lara recognized the silhouette of a fig tree atop a nearby hill.
+			As they rounded a bend in the path that ran beside the river, Lara recognised the silhouette of a fig tree atop a nearby hill. Then the brown fox jumped over the lazy dog.
 		</div>
-
 		<textarea id="theText" class="form-control" rows="4"></textarea>
 		<br>
 		<button type="button" id="start" class="btn btn-primary btn-lg btn-block">Start</button>
 		<button type="button" id="finish" class="btn btn-primary btn-lg btn-block">Finish</button>
+		<div id="resultSpeed" class="alert alert-danger">
+		</div>
+		<div id="underlinedText" class="alert alert-danger">
+		</div>
+		<div id="chartContainer" style="height: 270px; width: 100%;">
+		</div>
 
 		<br>
-		<div id="resultSpeed" class="alert alert-info">
-		</div>
-		<div id="resultErrors" class="alert alert-danger">
-		</div>
-		<div id="underlinedText" class="alert alert-info">
-		</div>
-		<div id="chartContainer" style="height: 370px; width: 100%;">
-		</div>
+		<button type="button" id="tryAgain" class="btn btn-primary btn-lg btn-block">Try again</button>
 
-
+	</div>
+	<div class="container text-center">
+		<footer>
+			<p>
+			Designed by <a href="http://www.karimzibari.com/">Karim Zibari</a>
+			</p>
+		</footer>
 	</div>
 </body>
 

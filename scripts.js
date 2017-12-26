@@ -18,8 +18,10 @@ $(document).ready(function () {
 
 	$("#finish").attr("disabled", true);
 	$("#theText").attr("disabled", true);
+	$("#tryAgain").hide();
+	$("#underlinedText").hide();
+
 	$("#resultSpeed").hide();
-	$("#resultErrors").hide();
 	$("#chartContainer").hide();
 
 	$("#start").click(function () {
@@ -34,8 +36,10 @@ $(document).ready(function () {
 	$("#finish").click(function () {
 		setFinishTime();
 
-		$("#finish").attr("disabled", true);
-		$("#start").attr("disabled", false);
+		//hide the buttons and textarea so that the user does not have to scroll to see results
+		$("#theText").css("display", "none");
+		$("#finish").css("display", "none");
+		$("#start").css("display", "none");
 
 		inputText = $("#theText").val();
 		speed = calculateTypingSpeed(inputText);
@@ -43,33 +47,38 @@ $(document).ready(function () {
 
 		if (inputWords.length < 5) {
 			$("#resultSpeed").text("You did not type enough words.");
-			$("#resultErrors").hide();
-			$("#underlinedText").hide();
 			$("#chartContainer").hide();
 			$("#resultSpeed").show();
+			$("#tryAgain").show();
 			return;
 		}
 		errors = checkText(inputText);
 
-		$("#resultSpeed").addClass("alert alert-info");
 		$("#resultSpeed").show();
 
-		$("#resultSpeed").text("Your speed is: ~" + Math.round(speed) + " words/minute.");
-		
+		var resultText = "Your speed is: ~" + Math.round(speed) + " words/minute. You made: " + errors + " error(s)!";
+
+		if (inputWords.length < (sampleText.trim().split(/\s+/)).length)
+			resultText += " You did not type all the words!";
+
+		$("#resultSpeed").text(resultText);
 		if (errors != 0) {
-			$("#resultErrors").show();
 			$("#underlinedText").show();
 			$("#underlinedText").html(underlinedText);
-			$("#resultErrors").text("You made: " + errors + " error(s)!");
 		}
 		$("#chartContainer").show();
 		displayChart();
+		$("#tryAgain").css("display", "inherit");
 	});
 
 	//Prevent user from pasting into the textarea
 	$("#theText").onpaste = function (e) {
 		e.preventDefault();
 	}
+	$("#tryAgain").click(function () {
+		clearResultSection();
+		location.reload();
+	});
 });
 
 function setStartTime() {
@@ -97,7 +106,8 @@ function checkText(text) {
 
 	errors = 0;
 	for (i = 0; i < typedWords.length; i++) {
-		if (typedWords[i].trim() != originalWords[i]) {
+		//check if typed word is equal to the correct word or its ajacent words
+		if (typedWords[i].trim() != originalWords[i] && typedWords[i].trim() != originalWords[i + 1] && typedWords[i].trim() != originalWords[i - 1]) {
 			errors += 1;
 			underlinedText += " " + "<u>" + typedWords[i] + "</u>";
 		} else {
@@ -110,7 +120,6 @@ function checkText(text) {
 function clearResultSection() {
 	errors = 0;
 	$("#resultSpeed").hide();
-	$("#resultErrors").hide();
 	$("#underlinedText").hide();
 	$("#chartContainer").hide();
 }
@@ -124,7 +133,7 @@ function displayChart() {
 			text: "Typing Speeds"
 		},
 		axisY: {
-			title: "Percentage of population",
+			title: "Percentage of Population",
 			suffix: "%",
 			includeZero: false
 		},

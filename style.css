@@ -1,5 +1,5 @@
 * {
-	padding: 5px;
+	padding: 2px;
 	font-family: Verdana, sens_serif;
 }
 
@@ -10,3 +10,12 @@ textarea {
 	font-weight: 600;
 }
 
+ul{
+	list-style-type: none;
+}
+footer{
+	margin-top: 20px;
+}
+.clearfix {
+    overflow: auto;
+}
