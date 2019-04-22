@@ -7,10 +7,18 @@ var inputText;
 var underlinedText;
 var speeed;
 var errors;
+var textSamples=["As they rounded a bend in the path that ran beside the river, Lara recognised the silhouette of a fig tree atop a nearby hill. Then the brown fox jumped over the lazy dog.",
+				 "It is a far, far better thing that I do, than I have ever done; it is a far, far better rest that I go to, than I have ever known.",
+				 "Have a heart that never hardens, and a temper that never tires, and a touch that never hurts.",
+				 "Reflect upon your present blessings -- of which every man has many -- not on your past misfortunes, of which all men have some.",
+				 "It was one of those March days when the sun shines hot and the wind blows cold: when it is summer in the light, and winter in the shade"
+				];
 
 $(document).ready(function () {
 
 	//Initialize all variables on page load
+	$("#sampleText").text(textSamples[getRndInteger(0,4)]);
+						  
 	sampleText = $("#sampleText").text();
 	inputText = "";
 	underlinedText = "";
@@ -22,9 +30,11 @@ $(document).ready(function () {
 	$("#underlinedText").hide();
 
 	$("#resultSpeed").hide();
+	$("#resultSpeed").hide();
 	$("#chartContainer").hide();
 
 	$("#start").click(function () {
+	
 		setStartTime();
 		$("#finish").attr("disabled", false);
 		$("#start").attr("disabled", true);
@@ -88,7 +98,9 @@ function setStartTime() {
 function setFinishTime() {
 	finishTime = new Date();
 }
-
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 function elapsedTime() {
 	return (finishTime - startTime);
 }
